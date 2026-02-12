@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekening — Fakhrul Fanani Nugroho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bri: #005baa;
+        --bca: #003f80;
+        --mandiri: #c8840a;
+        --gray-50: #f9f9f9;
+        --gray-100: #f2f2f2;
+        --gray-200: #e5e5e5;
+        --gray-400: #a0a0a0;
+        --gray-600: #6b6b6b;
+        --gray-900: #111111;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #fff;
+        color: var(--gray-900);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.25rem;
+      }
+
+      .wrapper {
+        width: 100%;
+        max-width: 480px;
+      }
+
+      .header {
+        margin-bottom: 2rem;
+      }
+
+      .name {
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--gray-900);
+      }
+
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .card {
+        border: 1px solid var(--gray-200);
+        border-radius: 14px;
+        padding: 1.3rem 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+        cursor: pointer;
+        background: #fff;
+        position: relative;
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+        border-color: var(--gray-400);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--accent);
+        border-radius: 14px 0 0 14px;
+      }
+      .card.bri {
+        --accent: var(--bri);
+      }
+      .card.bca {
+        --accent: var(--bca);
+      }
+      .card.mandiri {
+        --accent: var(--mandiri);
+      }
+
+      .info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .bank-name {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 0.3rem;
+      }
+
+      .number {
+        font-size: 1.05rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--gray-900);
+      }
+
+      .holder {
+        font-size: 0.7rem;
+        color: var(--gray-400);
+        margin-top: 0.2rem;
+      }
+
+      .copy-btn {
+        flex-shrink: 0;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 0.45rem 0.75rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--gray-600);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        white-space: nowrap;
+        transition:
+          background 0.18s,
+          border-color 0.18s,
+          color 0.18s;
+      }
+      .copy-btn:hover {
+        background: var(--gray-100);
+        border-color: var(--gray-400);
+        color: var(--gray-900);
+      }
+      .copy-btn svg {
+        width: 13px;
+        height: 13px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      .copy-btn.copied {
+        background: #f0faf5;
+        border-color: #a8dfc0;
+        color: #1a7a4a;
+        pointer-events: none;
+      }
+
+      .footer {
+        margin-top: 1.8rem;
+        text-align: center;
+        font-size: 0.68rem;
+        color: var(--gray-400);
+      }
+
+      @media (max-width: 400px) {
+        .number {
+          font-size: 0.92rem;
+        }
+        .copy-btn span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1 class="name">Rekening Fakhrul Fanani Nugroho</h1>
+      </div>
+
+      <div class="cards">
+        <div class="card bri" onclick="copyNumber(this, '376801025677534')">
+          <div class="info">
+            <div class="bank-name">Bank BRI</div>
+            <div class="number">3768 0102 5677 534</div>
+            <div class="holder">Fakhrul Fanani Nugroho</div>
+          </div>
+          <button class="copy-btn" tabindex="-1">
+            <svg viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <span>Salin</span>
+          </button>
+        </div>
+
+        <div class="card bca" onclick="copyNumber(this, '8930587631')">
+          <div class="info">
+            <div class="bank-name">Bank BCA</div>
+            <div class="number">893 058 7631</div>
+            <div class="holder">Fakhrul Fanani Nugroho</div>
+          </div>
+          <button class="copy-btn" tabindex="-1">
+            <svg viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <span>Salin</span>
+          </button>
+        </div>
+
+        <div class="card mandiri" onclick="copyNumber(this, '1800014731550')">
+          <div class="info">
+            <div class="bank-name">Bank Mandiri</div>
+            <div class="number">1800 0147 31550</div>
+            <div class="holder">Fakhrul Fanani Nugroho</div>
+          </div>
+          <button class="copy-btn" tabindex="-1">
+            <svg viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <span>Salin</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="footer">Ketuk kartu untuk menyalin nomor rekening</p>
+    </div>
+
+    <script>
+      let timers = {};
+      function copyNumber(card, number) {
+        navigator.clipboard.writeText(number).then(() => {
+          const btn = card.querySelector(".copy-btn");
+          const prev = btn.innerHTML;
+          btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg><span>Berhasil Disalin!</span>`;
+          btn.classList.add("copied");
+          clearTimeout(timers[number]);
+          timers[number] = setTimeout(() => {
+            btn.innerHTML = prev;
+            btn.classList.remove("copied");
+          }, 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
